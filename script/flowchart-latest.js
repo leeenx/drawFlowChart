@@ -417,7 +417,6 @@
       symbol = this.symbols[i];
       symbol.renderLines();
     }
-  
     maxX = this.maxXFromLine;
   
     for (i = 0, len = this.symbols.length; i < len; i++) {
