@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<meta content="telephone=no" name="format-detection">
+<meta content="email=no" name="format-detection">
+<title>用raphael.js生成svg流程图</title>
+<style>
+html,body{margin: 0; padding:0;}
+.wrapper{position: relative; width: 1024px; height: auto; margin: 0 auto; font-size: 14px; color: #666; line-height: 1.5;}
+h1{font-size: 24px; line-height: 1.5; color: #333; margin: 10px 0;}
+h2{font-size: 20px; line-height: 1.5; color: #333; margin: 8px 0;}
+a,a:visited{color: #2879d0;}
+em{color: #f60000;}
+textarea{display: block; width: 280px;  height: 400px; float: left;}
+.diagram{width: 720px; height: auto; float: right;}
+</style>
+</head>
+<body>
+<div class="wrapper">
+	<h1>此项目非原创项目，而是取自github上的项目：<a href="http://adrai.github.io/flowchart.js/" target="_blank">[flowchart.js]</a></h1>
+	本项目只是为了实现生成svg流程图的纯粹目的产生，仅对原来的项目的js略作了修改。因为原来的raphael.js在绘制svg是会报错，本项目修改的就是raphael.js报错的地方，当然使用原来的raphael.js也是可以正常使用的，只是本人不喜欢有错误提示，故而做了修改
+	<h2>项目依赖的js如下:</h2>
+	<a href="script/raphael-min.js" target="_blank">rapheal-min.js</a><br />
+	<a href="script/flowchart-latest.js" target="_blank">flowchart-latest.js</a><br />
+	<br />
+	以下是原项目的js地址<br />
+	<a href="https://raw.githubusercontent.com/DmitryBaranovskiy/raphael/master/raphael-min.js" target="_blank">rapheal-min.js</a><br />
+	<a href="http://adrai.github.io/flowchart.js/flowchart-latest.js" target="_blank">flowchart-latest.js</a><br />
+	<h2>具体使用方法参见以下地址</h2>
+	<a href="https://github.com/adrai/flowchart.js" target="_blank">https://github.com/adrai/flowchart.js</a><br />
+	<em>* demo如下:</em><br />
+	<textarea id="command">st=>start: Start|past:>http://www.google.com[blank]
+e=>end: Ende|future:>http://www.google.com
+op1=>operation: My Operation|past
+op2=>operation: Stuff|current
+sub1=>subroutine: My Subroutine|invalid
+cond=>condition: Yes 
+or No?|approved:>http://www.google.com
+c2=>condition: Good idea|rejected
+io=>inputoutput: catch something...|future
+
+st->op1(right)->cond
+cond(yes, right)->c2
+cond(no)->sub1(left)->op1
+c2(yes)->io->e
+c2(no)->op2->e
+	</textarea>
+	<div id="diagram" class="diagram"></div>
+</div>
+</body>
+
+<script src="script/raphael-min.js"></script>
+<script src="script/flowchart-latest.js"></script>
+<script>
+	//var diagram = flowchart.parse(cmd);
+	//diagram.drawSVG('diagram');
+	var command=document.getElementById("command"),diagram=document.getElementById("diagram");
+	command.addEventListener("change",function(){
+		diagram.innerHTML='';
+		flowchart.parse(this.value).drawSVG('diagram');
+	});
+	flowchart.parse(command.value).drawSVG('diagram');
+</script>
+</html>
