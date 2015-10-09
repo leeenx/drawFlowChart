@@ -52,7 +52,7 @@ c2(no)->op2->e
 ~function(){
 	var SVGContainer=document.createElement("div"),
 	canvas=document.createElement("canvas");
-	SVGContainer.style.cssText="width:1024px; height:1024px;";
+	SVGContainer.style.cssText="width:1024px; height:1024px; position: absolute; left: -1024px; top: -1024px;";
 	document.body.appendChild(SVGContainer);
 	window.drawFlowChart=function(cmd,cb){
 		flowchart.parse(cmd).drawSVG(SVGContainer);
