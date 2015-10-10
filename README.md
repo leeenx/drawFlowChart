@@ -43,6 +43,10 @@ drawFlowChart(
 );
 ```
 
+## DEMO
+
+DEMO: [http://leeenx.github.io/drawFlowChart/](http://leeenx.github.io/drawFlowChart/)
+
 ## 适用浏览器
 
 本项目是在chrome下开发的，其它浏览器没有测试过。估计firefox和ie9以上都是可以运行的
